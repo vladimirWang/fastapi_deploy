@@ -8,11 +8,11 @@ from sqlalchemy.orm import DeclarativeBase, Mapped, Session, mapped_column, sess
 
 from pydantic import BaseModel
 
-load_dotenv(".env.dev")
+load_dotenv()
 
 DATABASE_URL = os.getenv("SQLALCHEMY_DATABASE_URL")
 if not DATABASE_URL:
-    raise RuntimeError("缺少 SQLALCHEMY_DATABASE_URL，请在 .env.dev 中配置")
+    raise RuntimeError("缺少 SQLALCHEMY_DATABASE_URL，请配置环境变量或 .env 文件")
 
 engine = create_engine(DATABASE_URL, pool_pre_ping=True)
 SessionLocal = sessionmaker(bind=engine, autocommit=False, autoflush=False)
