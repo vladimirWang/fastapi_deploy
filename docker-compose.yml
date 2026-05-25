@@ -7,3 +7,14 @@ services:
       - "6000:6000"
     env_file:
       - .env.dev
+
+  postgres:
+    image: postgres:17-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: "${DATABASE_USER:-root}"
+      POSTGRES_PASSWORD: "${DATABASE_PASSWORD:-123456}"
+      POSTGRES_DB: "${DATABASE_NAME:-fastapi_deploy}"
+    volumes:
+      - postgres_data_local:/var/lib/postgresql/data
