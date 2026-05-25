@@ -17,4 +17,7 @@ services:
       POSTGRES_PASSWORD: "${DATABASE_PASSWORD}"
       POSTGRES_DB: "${DATABASE_NAME}"
     volumes:
-      - postgres_data_local:/var/lib/postgresql/data
+      - fastapi_deploy_postgres_data_prod:/var/lib/postgresql/data
+
+volumes:
+  fastapi_deploy_postgres_data_prod:
