@@ -5,12 +5,5 @@ services:
       dockerfile: Dockerfile
     ports:
       - "6000:6000"
-    volumes:
-      - .:/app
-    working_dir: /app
-    command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "6000"]
-    # depends_on:
-    #   - postgres
-    #   - redis
-    # networks:
-    #   - fastapi-network
+    # 生产部署不要挂载源码目录，否则会覆盖镜像内 uv sync 生成的 .venv
+    # command 使用 Dockerfile 中的 CMD: uv run uvicorn ...
