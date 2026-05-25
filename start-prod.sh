@@ -11,10 +11,10 @@ if [[ ! -f "$ENV_FILE" ]]; then
   exit 1
 fi
 
-# 旧版 docker compose 不支持 CLI 的 --env-file；加载后供 compose 内 ${DATABASE_*} 等替换
-set -a
-# shellcheck disable=SC1091
-source "$ENV_FILE"
-set +a
+# # 旧版 docker compose 不支持 CLI 的 --env-file；加载后供 compose 内 ${DATABASE_*} 等替换
+# set -a
+# # shellcheck disable=SC1091
+# source "$ENV_FILE"
+# set +a
 
-docker compose -f docker-compose.yml -p fastapi-prod up -d --build
+docker compose -f docker-compose.yml -p fastapi-prod --env-file ./.env.prod up -d --build
