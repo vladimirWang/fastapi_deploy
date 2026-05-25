@@ -2,13 +2,12 @@ import os
 from collections.abc import Generator
 from datetime import datetime
 
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 from sqlalchemy import BigInteger, DateTime, String, create_engine, select
-from sqlalchemy.orm import DeclarativeBase, Mapped, Session, mapped_column, sessionmaker
+from sqlalchemy.orm import DeclarativeBase, Mapped, Session, declarative_base, mapped_column, sessionmaker
 
 from pydantic import BaseModel
 
-load_dotenv()
 
 DATABASE_URL = os.getenv("SQLALCHEMY_DATABASE_URL")
 if not DATABASE_URL:
@@ -18,8 +17,10 @@ engine = create_engine(DATABASE_URL, pool_pre_ping=True)
 SessionLocal = sessionmaker(bind=engine, autocommit=False, autoflush=False)
 
 
-class Base(DeclarativeBase):
-    pass
+# class Base(DeclarativeBase):
+#     pass
+
+Base = declarative_base()
 
 
 class SysUser(Base):
