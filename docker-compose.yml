@@ -5,5 +5,5 @@ services:
       dockerfile: Dockerfile
     ports:
       - "6000:6000"
-    # 生产部署不要挂载源码目录，否则会覆盖镜像内 uv sync 生成的 .venv
-    # command 使用 Dockerfile 中的 CMD: uv run uvicorn ...
+    env_file:
+      - .env.dev

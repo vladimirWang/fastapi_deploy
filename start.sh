@@ -10,5 +10,10 @@ if [[ ! -d .venv ]]; then
   exit 1
 fi
 
+if [[ ! -f .env.dev ]]; then
+  echo "缺少 .env.dev，请先配置 SQLALCHEMY_DATABASE_URL" >&2
+  exit 1
+fi
+
 echo "启动 FastAPI → http://127.0.0.1:6000"
-exec .venv/bin/python main.py
+exec uv run --env-file .env.dev python main.py
