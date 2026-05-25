@@ -13,7 +13,7 @@ async def lifespan(app: FastAPI):
     Base.metadata.create_all(bind=engine)  # 启动时：表不存在则创建
     yield
 
-app = FastAPI(lifespan=lifespan)
+app = FastAPI()
 
 class SysUserOut(BaseModel):
     model_config = ConfigDict(from_attributes=True)
