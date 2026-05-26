@@ -18,5 +18,5 @@ services:
 
 networks:
   private_chef_network:
-    external:
-      name: private_chef_network
+    name: private_chef_network
+    external: true

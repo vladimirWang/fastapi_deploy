@@ -11,10 +11,10 @@ if [[ ! -f "$ENV_FILE" ]]; then
   exit 1
 fi
 
-# # 旧版 docker compose 不支持 CLI 的 --env-file；加载后供 compose 内 ${DATABASE_*} 等替换
-# set -a
-# # shellcheck disable=SC1091
-# source "$ENV_FILE"
-# set +a
+if ! docker network inspect private_chef_network >/dev/null 2>&1; then
+  echo "未找到 Docker 网络 private_chef_network，请先启动基础设施：" >&2
+  echo "  cd ../docker_infrastracture && docker compose up -d" >&2
+  exit 1
+fi
 
 docker compose -f docker-compose.yml -p fastapi-prod --env-file ./.env.prod up -d --build
