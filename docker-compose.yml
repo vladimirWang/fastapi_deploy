@@ -11,7 +11,7 @@ services:
     #   # 容器内必须用 compose 服务名 postgres（.env.prod 里 127.0.0.1 仅给宿主机用）
     #   SQLALCHEMY_DATABASE_URL: postgresql+psycopg://${DATABASE_USER}:${DATABASE_PASSWORD}@postgres:5432/${DATABASE_NAME}
     depends_on:
-      postgres:
+      shared-postgres:
         condition: service_healthy
     networks:
       - private_chef_network
