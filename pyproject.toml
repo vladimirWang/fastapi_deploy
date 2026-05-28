@@ -32,10 +32,13 @@ dependencies = [
     "PyJWT[crypto]==2.11.0",
     "redis==7.1.0",
     "ruff==0.15.0",
+    "SQLAlchemy[asyncio]==2.0.46",
+    "sqlglot[rs]==28.10.0",
+    "textual==8.2.5",
+    "user-agents==2.2.0",
     "psycopg[binary]>=3.2.0",
     "pydantic>=2.13.4",
     "python-dotenv>=1.0.0",
-    "sqlalchemy>=2.0.46",
     "uvicorn>=0.48.0",
 ]
 
