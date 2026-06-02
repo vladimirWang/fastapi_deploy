@@ -13,6 +13,10 @@ dependencies = [
     "pydantic>=2.13.4",
     "python-dotenv>=1.0.0",
     "uvicorn>=0.48.0",
+    "aiofiles==25.1.0",
+    "APScheduler==3.11.2",
+    "async-lru==2.1.0",
+    "bcrypt==5.0.0",
 ]
 
 # 配置双索引源：优先清华镜像源，其次官方 PyPI
